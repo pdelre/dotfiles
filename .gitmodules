@@ -1,3 +1,6 @@
 [submodule "dotbot"]
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
+[submodule "zsh/prezto/prezto"]
+	path = zsh/prezto/prezto
+	url = https://github.com/sorin-ionescu/prezto
