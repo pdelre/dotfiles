@@ -1,6 +1,7 @@
 [submodule "dotbot"]
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
+	branch = master
 [submodule "zsh/prezto/prezto"]
 	path = zsh/prezto/prezto
 	url = https://github.com/sorin-ionescu/prezto
