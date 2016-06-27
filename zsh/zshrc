@@ -13,4 +13,22 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+
+if [ $(uname -s) = 'Darwin' ]; then
+  local ls='/usr/local/bin/gls'
+  source "${ZDOTDIR:-$HOME}/.dotfiles/osx/alias.sh"
+else
+  local ls='ls'
+fi
+
+alias ls="${ls} --color --group-directories-first"
 alias ll='ls -alh'
+
+# user bin
+PATH=${ZDOTDIR:-$HOME}/bin:${PATH}
+
+# python
+export WORKON_HOME=${HOME}/.virtualenvs
+export PROJECT_HOME=${HOME}/Projects
+source /usr/local/bin/virtualenvwrapper_lazy.sh
+PATH=${ZDOTDIR:-$HOME}/Library/Python/2.7/bin:${PATH}
