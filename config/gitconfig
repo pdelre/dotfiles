@@ -1,0 +1,149 @@
+[user]
+  name  = Paul DelRe
+  # don't set global email so different emails can be used for different repos
+  # @see http://stackoverflow.com/questions/12292582/how-do-i-make-git-block-commits-if-user-email-isnt-set
+  # @see http://collectiveidea.com/blog/archives/2016/04/04/multiple-personalities-in-git/
+  useConfigOnly = true
+[alias]
+  st    = status -sb
+  stats = show --stat=140
+  cd    = checkout
+  diff-stage = diff --staged
+
+  # WIP stash
+  wip      = !"git stash list --grep=': '$(git rev-parse --short HEAD) --grep=' on '$(git rev-parse --abbrev-ref HEAD) | sed 's/:.*$//'"
+  wip-st   = !"test -n \"$(git wip)\" && gecho -e '\\033[35mCommit has WIP in '$(git wip)'\\033[0m' || true"
+  wip-ls   = !"test -n \"$(git wip)\" && (git stash list | grep $(git wip)) || true"
+  wip-pop  = !"test -n \"$(git wip)\" && git stash pop $(git wip) || true"
+  wip-show = !"test -n \"$(git wip)\" && git show $(git wip) || true"
+
+  # log graph base
+  log-super-pretty = log --graph --date=local --pretty='%C(bold blue)%h%C(reset) - %C(bold cyan)%ad%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an'
+  # full commit messages between two refs; for making a merge comment message
+  # log-commits = log --pretty='%B----'
+  log-commits = log --pretty='- %B'
+  # log entries with diff
+  log-diffs = log -p
+
+  # log graph for current branch
+  lgb  = !"git log-super-pretty"
+  # log graph for current branch
+  lgbh = !"git --no-pager lgb -8"
+  # log commit messages
+  lgc  = !"git log-commits --reverse --first-parent --no-merges"
+  # log graph for all branches
+  lg   = !"git log-super-pretty --all"
+  # recent log graph for all branches
+  lgh  = !"git --no-pager lg -8"
+  # log entries with diff
+  lgd  = !"git log-diffs"
+  # log for one day (for PT log time)
+  log-time = "!f() { git log --format=fuller --author=pdelre --date=iso --after=$(date --date=\"$1\" --iso-8601) --reverse --all --name-only | grep -B2 -A4 \"^AuthorDate: $(date --date=\"$1\" --iso-8601)\" | sed 's/^--$//' | less; };  f" # $1 date
+
+  # reflog pretty
+  reflog-pretty = reflog --pretty='* %C(bold blue)%h%C(reset) - %C(bold cyan)%gd%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''%C(red)|%C(reset)           %gs'
+
+  # reflog short alias
+  rg = !"git reflog-pretty"
+  # recent reflog short alias
+  rgh = !"git --no-pager reflog-pretty -8"
+
+  # git diff names
+  diff-name = !"echo $(git rev-parse --abbrev-ref HEAD | tr '/' '_').$(basename $(git get-origin-url) .git).diff"
+  diff-path = !"echo $(git rev-parse --show-toplevel)/../$(git diff-name)"
+  # git diff for review board
+  super-rb = !"git diff --full-index $(git merge-base origin/master HEAD) HEAD"
+  auto-rb  = !"git super-rb > $(git diff-path)"
+  auto-lgc = !"git lgc $(git merge-base origin/master HEAD)..HEAD | awk NF"
+  # git-svn diff for review board
+  rb-svn = !"~/dotfiles/functions/git/git-svn-diff.sh"
+  foooo = !"(git show-ref -q svn/git-svn && echo 'svn/git-svn') || (git show-ref -q svn/trunk && echo 'svn/trunk')"
+  auto-rb-svn = !"git rb-svn $(git merge-base $(git foooo) HEAD) HEAD > $(git diff-path)"
+  #git show current rebase step
+  show-patch = !"git show --ignore-all-space  $(head -n1 .git/rebase-apply/patch)"
+  # git color diffs
+  diff-php   = "diff --word-diff=color --word-diff-regex='[A-Za-z0-9_'\\''\\$]+|[^[:space:]]'"
+  diff-alpha = "diff --word-diff=color --word-diff-regex='\\w+|[^[:space:]]'"
+  # http://theunixtoolbox.com/git-diff-highlight/
+  # https://github.com/paulirish/dotfiles/commit/6743b907ff586c28cd36e08d1e1c634e2968893e#commitcomment-13349456
+  diff-hi    = !"f() { git diff --color $1 $2 $3 | diff-highlight | less -r; }; f" # $1-3 git diff params
+  show-php   = "show --word-diff=color --word-diff-regex='[A-Za-z0-9_'\\''\\$]+|[^[:space:]]'"
+  show-alpha = "show --word-diff=color --word-diff-regex='\\w+|[^[:space:]]'"
+  show-hi    = !"f() { git show --color $1 | diff-highlight | less -r; }; f" # $1 ref
+  pwd = log -1 --pretty='%C(bold blue)%H%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'
+
+  # svn
+  get-origin-url = !"git is-svn && git svn info --url || git ls-remote --get-url origin"
+  is-svn = !"test -d .git/svn/refs"
+
+  # current status and recent log
+  wat = !"git ls && echo '' && git wip-st && git st && echo '' && git lgbh"
+
+  # hooks
+  pre = !".git/hooks/pre-commit"
+
+  # release
+  is-merged   = "!f() { git branch --contains \"$(git log --grep=$(git rev-parse $1) --all --pretty='%H')\" $2 $3 $4 2> /dev/null && echo 'YES' || echo 'NOPE'; }; f" # $1 branch $2-$4 extra params
+  is-released = "!f() { git is-merged $1 --remotes origin/master | grep -v master; }; f"
+  merge-squash = merge --ff --squash
+  push-new = !"git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)"
+  svn-deploy = "!f() { git svn fetch && git cd $1 && git rebase svn/git-svn && git cd master && git rebase svn/git-svn && git merge --no-commit $1; }; f" # $1 branch
+  rebase-master = !"git fetch origin master:master && git rebase master"
+  #rebase-master-old = !"git cd master && git pull && git cd - && git rebase master"
+  rebase-master-stash = !"git stash -u && git cd master && git pull && git cd - && git rebase origin/master && git stash pop"
+  rebase-upstream = !"git rebase $(git rev-parse --abbrev-ref --symbolic-full-name '@{upstream}')"
+
+  # tracking
+  time-entry = !"echo \"Date: $(date)\" && echo \"Origin: $(git get-origin-url)\" && echo \"Branch: $(git rev-parse --abbrev-ref HEAD)\" && echo '' && git log -1 --name-status && echo ''"
+
+  # deploy trains
+  train-rebase = "!f() { git fetch -q origin && git rebase --onto origin/$2 $(git merge-base origin/master $1) $1; }; f" # $1 feature $2 train
+  train-join   = "!f() { git cd $1 && git train-rebase $1 $2 && git cd $2 && git merge-squash $1 && git branch -m $1 train/$1 && git commit --no-verify; }; f" # $1 feature $2 train
+  # need to replace xargs with gxargs on osx
+  train-clean  = "!f() { git fetch -q origin && git branch --merged origin/master | tr -d ' ' | egrep "^deploy" | gxargs -r -n 1 git branch -D; }; f"
+  train-archive  = "!f() { git branch --list train/* | tr -d ' ' | gxargs -r -n 1 git branch-archive; }; f"
+
+  # branches
+  ls = branch -vv
+  branch-archive = "!f() { git tag _$1 $1 && git branch -D $1; }; f"
+  branch-shelf   = "!f() { git branch -m $1 shelf/$1; }; f"
+
+  # misc
+  time-machine = "!f() { SHA=$(git rev-list -n 1 --before=\"$1\" master) && (git log -1 $SHA && echo '\n' && git --no-pager show $SHA:$2 | nl -ba) | less; }; f" # $1 datetime $2 filepath
+
+[core]
+  autocrlf = false
+  preloadindex = true
+  fscache = true
+  editor = vim
+  pager = diff-highlight | less -r
+  trustctime = false
+  excludesfile = /Users/pdelre/.git/info/excludes
+[init]
+  templatedir = ~/.git/templates
+[color "branch"]
+  current = cyan bold
+  local = green bold
+  remote = red bold
+  upstream = red bold
+[color "diff"]
+  meta = magenta bold
+  frag = yellow
+  func = cyan bold
+[branch]
+  autosetuprebase = always
+  autosetupmerge = always
+[fetch]
+  prune = true
+[push]
+  default = simple
+[pull]
+  rebase = true
+[merge]
+  tool = idea
+  ff = false
+  log = 100
+[mergetool "idea"]
+  cmd = idea merge "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
+[rerere]
+  enabled = true
