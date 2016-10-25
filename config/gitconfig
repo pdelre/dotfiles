@@ -20,7 +20,6 @@
   # log graph base
   log-super-pretty = log --graph --date=local --pretty='%C(bold blue)%h%C(reset) - %C(bold cyan)%ad%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an'
   # full commit messages between two refs; for making a merge comment message
-  # log-commits = log --pretty='%B----'
   log-commits = log --pretty='- %B'
   # log entries with diff
   log-diffs = log -p
@@ -88,10 +87,12 @@
   merge-squash = merge --ff --squash
   push-new = !"git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)"
   svn-deploy = "!f() { git svn fetch && git cd $1 && git rebase svn/git-svn && git cd master && git rebase svn/git-svn && git merge --no-commit $1; }; f" # $1 branch
+  pull-master = !"git fetch origin master:master"
   rebase-master = !"git fetch origin master:master && git rebase master"
   #rebase-master-old = !"git cd master && git pull && git cd - && git rebase master"
-  rebase-master-stash = !"git stash -u && git cd master && git pull && git cd - && git rebase origin/master && git stash pop"
+  rebase-master-stash = !"git stash -u && git rebase-master && git stash pop"
   rebase-upstream = !"git rebase $(git rev-parse --abbrev-ref --symbolic-full-name '@{upstream}')"
+  pull-local = !"~/.dotfiles/functions/git/git-pull-all-local-track.sh"
 
   # tracking
   time-entry = !"echo \"Date: $(date)\" && echo \"Origin: $(git get-origin-url)\" && echo \"Branch: $(git rev-parse --abbrev-ref HEAD)\" && echo '' && git log -1 --name-status && echo ''"
@@ -105,11 +106,13 @@
 
   # branches
   ls = branch -vv
+  ls-behind = !"git ls | grep behind"
   branch-archive = "!f() { git tag _$1 $1 && git branch -D $1; }; f"
   branch-shelf   = "!f() { git branch -m $1 shelf/$1; }; f"
 
   # misc
   time-machine = "!f() { SHA=$(git rev-list -n 1 --before=\"$1\" master) && (git log -1 $SHA && echo '\n' && git --no-pager show $SHA:$2 | nl -ba) | less; }; f" # $1 datetime $2 filepath
+  clean-orig = "clean -f '*.orig'"
 
 [core]
   autocrlf = false
