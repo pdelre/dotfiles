@@ -99,10 +99,10 @@
 
   # deploy trains
   train-rebase = "!f() { git fetch -q origin && git rebase --onto origin/$2 $(git merge-base origin/master $1) $1; }; f" # $1 feature $2 train
-  train-join   = "!f() { git cd $1 && git train-rebase $1 $2 && git cd $2 && git merge-squash $1 && git branch -m $1 train/$1 && git commit --no-verify; }; f" # $1 feature $2 train
+  train-join   = "!f() { git cd $1 && git train-rebase $1 $2 && git cd $2 && git pull && git merge-squash $1 && git branch -m $1 train/$2/$1 && git commit --no-verify; }; f" # $1 feature $2 train
   # need to replace xargs with gxargs on osx
   train-clean  = "!f() { git fetch -q origin && git branch --merged origin/master | tr -d ' ' | egrep "^deploy" | gxargs -r -n 1 git branch -D; }; f"
-  train-archive  = "!f() { git branch --list train/* | tr -d ' ' | gxargs -r -n 1 git branch-archive; }; f"
+  train-archive  = "!f() { git branch --list 'train/*' | tr -d ' ' | gxargs -r -n 1 git branch-archive; }; f"
 
   # branches
   ls = branch -vv
