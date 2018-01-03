@@ -7,3 +7,7 @@ _git_lgbh() {
 _git_branch-archive() {
  _git_branch
 }
+
+_git_mr-ready() {
+ _git_branch
+}

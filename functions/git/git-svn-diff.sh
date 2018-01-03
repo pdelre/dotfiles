@@ -1,5 +1,8 @@
 #!/bin/sh
 
+#SED=$(which sed)
+SED=$(which gsed)
+
 HASHES="$@"
 FIRST_HASH=`echo ${HASHES} | cut -d' ' -f 1`
 REV=`git svn find-rev ${FIRST_HASH}`
@@ -7,8 +10,8 @@ REV=`git svn find-rev ${FIRST_HASH}`
 INDEX_SEPARATOR="==================================================================="
 
 # Note: removed the $* to support passing a hash as the first argument
-git diff --no-prefix ${HASHES} |
-sed "
+git diff -M100% --no-prefix ${HASHES} |
+$SED "
 # New files have /dev/null as their original path
 /^--- \/dev\/null/{
 # Read a line into the pattern space
