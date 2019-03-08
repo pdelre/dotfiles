@@ -15,6 +15,9 @@ if ! zgen saved; then
   # Add Fish-like autosuggestions to your ZSH.
   zgen load zsh-users/zsh-autosuggestions
 
+  # theme
+  zgen load denysdovhan/spaceship-prompt spaceship
+
   # generate the init script from plugins above
   zgen save
 fi
