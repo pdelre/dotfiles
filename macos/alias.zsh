@@ -14,6 +14,7 @@ alias df='/usr/local/bin/gdf'
 alias echo='/usr/local/bin/gecho'
 alias tar='/usr/local/bin/gtar'
 alias touch='/usr/local/bin/gtouch'
+alias ls="${LS_BIN}"
 
 # Brew
 alias brew-cask-outdated='brew cask list | xargs brew cask info | grep -B3 "Not installed"'
