@@ -14,9 +14,27 @@ fi
 
 # Customize to your needs...
 
+# git
+source ~/.dotfiles/functions/git/git-alias-completion.sh
+
+# Disable glob matching
+# https://unix.stackexchange.com/questions/310540/how-to-get-rid-of-no-match-found-when-running-rm/
+unsetopt NOMATCH
+
 if [ $(uname -s) = 'Darwin' ]; then
   local ls='/usr/local/bin/gls'
   source "${ZDOTDIR:-$HOME}/.dotfiles/osx/alias.sh"
+
+  local php_path='/usr/local/opt/php@7.2'
+  local php_path=$(brew --prefix 'php@7.2')
+
+  export PATH="${php_path}/bin:$PATH"
+  export PATH="${php_path}/sbin:$PATH"
+  #export PATH="$(brew --prefix php72)/bin:$PATH"
+  #export PATH="$(brew --prefix php72)/sbin:$PATH"
+
+  local ruby_path=$(brew --prefix ruby)
+  export PATH="${ruby_path}/bin:$PATH"
 else
   local ls='ls'
 fi
@@ -24,11 +42,71 @@ fi
 alias ls="${ls} --color --group-directories-first"
 alias ll='ls -alh'
 
+# Spaceship
+SPACESHIP_PROMPT_ORDER=(
+  exit_code     # Exit code section
+#  time          # Time stamps section
+  user          # Username section
+  host          # Hostname section
+  dir           # Current directory section
+  git           # Git section (git_branch + git_status)
+#  hg            # Mercurial section (hg_branch  + hg_status)
+#  package       # Package version
+#  node          # Node.js section
+#  ruby          # Ruby section
+#  elixir        # Elixir section
+#  xcode         # Xcode section
+#  swift         # Swift section
+#  golang        # Go section
+#  php           # PHP section
+#  rust          # Rust section
+#  haskell       # Haskell Stack section
+#  julia         # Julia section
+#  docker        # Docker section
+#  aws           # Amazon Web Services section
+#  venv          # virtualenv section
+#  conda         # conda virtualenv section
+#  pyenv         # Pyenv section
+#  dotnet        # .NET section
+#  ember         # Ember.js section
+#  kubecontext   # Kubectl context section
+#  terraform     # Terraform workspace section
+  exec_time     # Execution time
+  line_sep      # Line break
+#  battery       # Battery level and status
+#  vi_mode       # Vi-mode indicator
+  jobs          # Background jobs indicator
+  char          # Prompt character
+)
+SPACESHIP_PROMPT_FIRST_PREFIX_SHOW=true
+SPACESHIP_CHAR_SYMBOL='$ '
+SPACESHIP_USER_SHOW=always
+SPACESHIP_USER_PREFIX='['
+SPACESHIP_USER_SUFFIX=''
+SPACESHIP_HOST_SHOW=always
+SPACESHIP_HOST_PREFIX='@'
+SPACESHIP_HOST_SUFFIX='] '
+SPACESHIP_DIR_TRUNC_REPO=false
+SPACESHIP_EXIT_CODE_SHOW=true
+SPACESHIP_EXIT_CODE_SUFFIX=$'\n\n'
+
+EDITOR=vim
+
 # user bin
 PATH=${ZDOTDIR:-$HOME}/bin:${PATH}
+# global composer bin
+PATH=${ZDOTDIR:-$HOME}/.composer/vendor/bin:${PATH}
 
 # python
 export WORKON_HOME=${HOME}/.virtualenvs
 export PROJECT_HOME=${HOME}/Projects
 source /usr/local/bin/virtualenvwrapper_lazy.sh
 PATH=${ZDOTDIR:-$HOME}/Library/Python/2.7/bin:${PATH}
+
+#direnv
+eval "$(direnv hook zsh)"
+
+# zplug
+source ${ZDOTDIR:-$HOME}/.zplug/init.zsh
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

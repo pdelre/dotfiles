@@ -59,6 +59,7 @@ def fix_environment():
     preference order would equate to Homebrew, Macports, then system.
     """
     os.environ['PATH'] = ':'.join([
+        '/usr/local/opt/ruby/bin',
         '/usr/local/bin',
         '/usr/local/sbin',
         '/opt/local/bin',
@@ -155,7 +156,7 @@ def print_menu():
     # Fetch list of all outdated packages from all package manager available on
     # the system.
     _, output, error = run(
-        'mpm', '--output-format', 'json', 'outdated', '--cli-format', 'bitbar')
+        'mpm', '--output-format', 'json', '--include-auto-updates', 'outdated', '--cli-format', 'bitbar')
 
     # Bail-out immediately on errors related to mpm self-execution or if mpm is
     # not able to produce any output.

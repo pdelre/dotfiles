@@ -11,3 +11,7 @@ _git_branch-archive() {
 _git_mr-ready() {
  _git_branch
 }
+
+_git_mr-create() {
+ _git_branch
+}
