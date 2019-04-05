@@ -5,16 +5,19 @@ if test ! "$(uname)" = "Darwin"
   return
 fi
 
-# GNU
+# TODO: look into /usr/local/opt/coreutils/libexec/gnubin
 alias du='/usr/local/bin/gdu'
-alias xargs='/usr/local/bin/gxargs'
 alias date='/usr/local/bin/gdate'
-alias sed='/usr/local/bin/gsed'
 alias df='/usr/local/bin/gdf'
 alias echo='/usr/local/bin/gecho'
-alias tar='/usr/local/bin/gtar'
 alias touch='/usr/local/bin/gtouch'
-alias ls="${LS_BIN}"
+
+# TODO: look into /usr/local/opt/gnu-tar/libexec/gnubin
+alias tar='/usr/local/bin/gtar'
+
+# GNU
+alias xargs='/usr/local/bin/gxargs'
+alias sed='/usr/local/bin/gsed'
 
 # Brew
 alias brew-cask-outdated='brew cask list | xargs brew cask info | grep -B3 "Not installed"'

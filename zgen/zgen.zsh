@@ -15,6 +15,10 @@ if ! zgen saved; then
   # Add Fish-like autosuggestions to your ZSH.
   zgen load zsh-users/zsh-autosuggestions
 
+  # Creates intelligent terminal titles in tmux, zsh, and vim
+  # Can be removed if omz is used instead
+  zgen load MikeDacre/tmux-zsh-vim-titles
+
   # theme
   zgen load denysdovhan/spaceship-prompt spaceship
 
