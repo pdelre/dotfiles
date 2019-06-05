@@ -98,6 +98,8 @@
         default = simple
 [pull]
         rebase = true
+[pack]
+        useSparse = true
 [merge]
         tool = idea
         ff = false
