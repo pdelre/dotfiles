@@ -19,8 +19,11 @@ if ! zgen saved; then
   # Can be removed if omz is used instead
   zgen load MikeDacre/tmux-zsh-vim-titles
 
-  # theme
-  zgen load denysdovhan/spaceship-prompt spaceship
+  # powerlevel10k theme
+  zgen load romkatv/powerlevel10k powerlevel10k
+
+  # spaceship theme
+  # zgen load denysdovhan/spaceship-prompt spaceship
 
   # generate the init script from plugins above
   zgen save
