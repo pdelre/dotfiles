@@ -17,3 +17,5 @@ export PATH="${php_path}/sbin:$PATH"
 # local ruby_path=$(brew --prefix ruby)
 local ruby_path='/usr/local/opt/ruby'
 export PATH="${ruby_path}/bin:$PATH"
+
+export PATH="/usr/local/bin:/usr/local/sbin:${HOME}/bin:$PATH"
