@@ -101,11 +101,11 @@
 [pack]
         useSparse = true
 [merge]
-        tool = idea
+	tool = idea
         ff = false
         log = 100
 [mergetool "idea"]
-        cmd = idea merge "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
+	cmd = idea merge $LOCAL $REMOTE $BASE $MERGED
 [rerere]
         enabled = true
 [rebase]
