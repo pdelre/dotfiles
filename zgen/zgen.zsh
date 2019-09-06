@@ -11,6 +11,9 @@ if ! zgen saved; then
 
   # Load more completion files for zsh from the zsh-lovers github repo.
   zgen load zsh-users/zsh-completions src
+  # Docker completions
+  zgen load docker/cli contrib/completion/zsh
+  zgen load docker/compose contrib/completion/zsh
 
   # Add Fish-like autosuggestions to your ZSH.
   zgen load zsh-users/zsh-autosuggestions

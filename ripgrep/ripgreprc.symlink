@@ -1,0 +1,17 @@
+# colors
+--colors=line:fg:yellow
+--colors=line:style:bold
+--colors=path:fg:green
+--colors=path:style:bold
+--colors=match:fg:black
+--colors=match:bg:yellow
+--colors=match:style:nobold
+
+# case-insensitive unless the search uses UpperCase
+--smart-case
+
+# don't search Git internals
+--glob=!.git/*
+--glob=!.idea/*
+-uu
+#--no-ignore-vcs
