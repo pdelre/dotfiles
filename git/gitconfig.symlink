@@ -66,6 +66,7 @@
         editor = vim
         trustctime = false
         excludesfile = ~/.gitignore
+        attributesFile = ~/.gitattributes
 	commitGraph = true
 [pager]
         log = diff-highlight | less -RF# --pattern '^(commit|diff --git|@@)'
@@ -115,3 +116,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[protocol]
+	version = 2
