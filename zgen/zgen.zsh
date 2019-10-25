@@ -25,6 +25,9 @@ if ! zgen saved; then
   # powerlevel10k theme
   zgen load romkatv/powerlevel10k powerlevel10k
 
+  # Jump quickly to directories that you have visited "frecently."
+  zgen load agkozak/zsh-z
+
   # spaceship theme
   # zgen load denysdovhan/spaceship-prompt spaceship
 
