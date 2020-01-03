@@ -2,6 +2,11 @@
 [include]
     path = ~/.gitconfig.local
     path = ~/.git/config/alias
+[user]
+    # force user to configure user.name & user.email
+    # @see http://stackoverflow.com/questions/12292582/how-do-i-make-git-block-commits-if-user-email-isnt-set
+    # @see http://collectiveidea.com/blog/archives/2016/04/04/multiple-personalities-in-git/
+    useConfigOnly = true
 [init]
     templateDir = ~/.git/templates
 [core]
