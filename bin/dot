@@ -51,5 +51,5 @@ $DOTFILES_ROOT/homebrew/install.sh 2>&1
 #brew update
 
 # Install software
-echo "› $DOTFILES_ROOT/script/install"
-$DOTFILES_ROOT/script/install
+echo "› $DOTFILES_ROOT/.make/install"
+$DOTFILES_ROOT/.make/install
