@@ -1,0 +1,57 @@
+[alias]
+    st    = status -sb
+    stats = show --stat=140
+    cd    = checkout
+    diff-stage = diff --staged
+
+    # WIP stash
+    wip      = !"git stash list --grep=': '$(git rev-parse --short HEAD) --grep=' on '$(git rev-parse --abbrev-ref HEAD) | sed 's/:.*$//'"
+    wip-st   = !"test -n \"$(git wip)\" && gecho -e '\\033[35mCommit has WIP in '$(git wip)'\\033[0m' || true"
+    wip-ls   = !"test -n \"$(git wip)\" && (git stash list | grep $(git wip)) || true"
+    wip-pop  = !"test -n \"$(git wip)\" && git stash pop $(git wip) || true"
+    wip-show = !"test -n \"$(git wip)\" && git show $(git wip) || true"
+
+    # log graph base
+    log-super-pretty = log --graph --date=local --pretty='%C(bold blue)%h%C(reset) - %C(bold cyan)%ad%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''              %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+    # full commit messages between two refs; for making a merge comment message
+    log-commits = log --pretty='- %B'
+    # log entries with diff
+    log-diffs = log -p
+
+    # log graph for current branch
+    lgb  = !"git log-super-pretty"
+    # log graph for current branch
+    lgbh = !"git --no-pager lgb -8"
+    # log commit messages
+    lgc  = !"git log-commits --reverse --first-parent --no-merges"
+    # log graph for all branches
+    lg   = !"git log-super-pretty --all"
+    # recent log graph for all branches
+    lgh  = !"git --no-pager lg -8"
+    # log entries with diff
+    lgd  = !"git log-diffs"
+
+    # reflog pretty
+    reflog-pretty = reflog --pretty='* %C(bold blue)%h%C(reset) - %C(bold cyan)%gd%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''%C(red)|%C(reset)           %gs'
+
+    # reflog short alias
+    rg = !"git reflog-pretty"
+    # recent reflog short alias
+    rgh = !"git --no-pager reflog-pretty -8"
+
+    # current status and recent log
+    wat = !"git ls && echo '' && git wip-st && git st && echo '' && git lgbh"
+
+    # hooks
+    pre = !".git/hooks/pre-commit"
+
+    # branches
+    ls = branch -vv
+    ls-behind = !"git ls | grep behind"
+    branch-archive = "!f() { git tag _$1 $1 && git branch -D $1; }; f"
+    branch-shelf   = "!f() { git branch -m $1 shelf/$1; }; f"
+
+    # misc
+    time-machine = "!f() { SHA=$(git rev-list -n 1 --before=\"$1\" master) && (git log -1 $SHA && echo '\n' && git --no-pager show $SHA:$2 | nl -ba) | less; }; f" # $1 datetime $2 filepath
+    clean-orig = "clean -f '*.orig'"
+    root = "rev-parse --show-toplevel"
