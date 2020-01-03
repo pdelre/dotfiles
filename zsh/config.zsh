@@ -1,5 +1,7 @@
 export LSCOLORS="exfxcxdxbxegedabagacad"
 export CLICOLOR=true
+# remove `/` & `=` from WORDCHARS
+export WORDCHARS=${WORDCHARS//[\/=]/}
 
 fpath=($DOTFILES_ROOT/functions $fpath)
 
@@ -30,13 +32,3 @@ setopt HIST_REDUCE_BLANKS
 # don't expand aliases _before_ completion has finished
 #   like: git comm-[tab]
 setopt complete_aliases
-
-bindkey '^[^[[D' backward-word
-bindkey '^[^[[C' forward-word
-bindkey '^[[5D' beginning-of-line
-bindkey '^[[5C' end-of-line
-bindkey '^[[3~' delete-char
-bindkey '^?' backward-delete-char
-
-bindkey '^[[H' beginning-of-line
-bindkey '^[[F' end-of-line
