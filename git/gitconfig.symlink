@@ -58,7 +58,8 @@
         time-machine = "!f() { SHA=$(git rev-list -n 1 --before=\"$1\" master) && (git log -1 $SHA && echo '\n' && git --no-pager show $SHA:$2 | nl -ba) | less; }; f" # $1 datetime $2 filepath
         clean-orig = "clean -f '*.orig'"
         root = "rev-parse --show-toplevel"
-
+[init]
+        templateDir = ~/.git/templates
 [core]
         autocrlf = false
         preloadindex = true
