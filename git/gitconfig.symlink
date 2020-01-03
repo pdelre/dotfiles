@@ -2,6 +2,7 @@
 [include]
     path = ~/.gitconfig.local
     path = ~/.git/config/alias
+    path = ~/.git/config/diff
 [user]
     # force user to configure user.name & user.email
     # @see http://stackoverflow.com/questions/12292582/how-do-i-make-git-block-commits-if-user-email-isnt-set
@@ -18,16 +19,6 @@
     excludesFile = ~/.git/info/exclude
     attributesFile = ~/.git/info/attributes
     commitGraph = true
-[pager]
-    log = diff-highlight | less -RF# --pattern '^(commit|diff --git|@@)'
-    show = diff-highlight | less -RF# --pattern '^(commit|diff --git|@@)'
-    diff = diff-highlight | less -RF# --pattern '^(commit|diff --git|@@)'
-    branch = false
-[interactive]
-    diffFilter = diff-highlight
-[diff]
-    compactionHeuristic = 1
-    indentHeuristic = 1
 [color]
     ui = auto
 [color "branch"]
