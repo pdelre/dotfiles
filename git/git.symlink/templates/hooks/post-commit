@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+hooks_post_commit="${HOME}/.git/hooks/post-commit.d/"
+
+for hook in ${hooks_post_commit}*; do
+	"$hook"
+done
+

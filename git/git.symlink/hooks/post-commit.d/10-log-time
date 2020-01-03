@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# gdate is for OSX
+git time-entry >> ~/timelog/$(gdate -I).log
