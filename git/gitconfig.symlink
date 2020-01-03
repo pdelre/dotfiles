@@ -67,7 +67,7 @@
         editor = vim
         trustctime = false
         excludesfile = ~/.gitignore
-        attributesFile = ~/.gitattributes
+        attributesFile = ~/.git/info/attributes
 	commitGraph = true
 [pager]
         log = diff-highlight | less -RF# --pattern '^(commit|diff --git|@@)'
