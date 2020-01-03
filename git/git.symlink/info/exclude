@@ -7,6 +7,9 @@ pdr
 *.iml
 .idea
 
+#vscode
+.vscode
+
 # OSX
 # ===
 

@@ -66,7 +66,7 @@
         fscache = true
         editor = vim
         trustctime = false
-        excludesfile = ~/.gitignore
+        excludesFile = ~/.git/info/exclude
         attributesFile = ~/.git/info/attributes
 	commitGraph = true
 [pager]
