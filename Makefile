@@ -20,3 +20,7 @@ refresh-brewfile:	## Dumps current Brew bundle to Brewfile.
 .PHONY: dotfiles
 dotfiles: ## Install dotfiles defined as `*.symlink` files. Safe to run multiple times.
 	.make/symlink_dotfiles
+
+.PHONY: clean-broken-symlinks
+clean-broken-symlinks: ## Deletes any broken symlinks in the home diretory
+	gfind ~ -maxdepth 1 -xtype l -print -delete
