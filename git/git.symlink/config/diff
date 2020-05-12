@@ -1,0 +1,10 @@
+[pager]
+    log = diff-highlight | less -RF# --pattern '^(commit|diff --git|@@)'
+    show = diff-highlight | less -RF# --pattern '^(commit|diff --git|@@)'
+    diff = diff-highlight | less -RF# --pattern '^(commit|diff --git|@@)'
+    branch = false
+[interactive]
+    diffFilter = diff-highlight
+[diff]
+    compactionHeuristic = 1
+    indentHeuristic = 1

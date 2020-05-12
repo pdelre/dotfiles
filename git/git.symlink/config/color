@@ -1,0 +1,11 @@
+[color]
+    ui = auto
+[color "branch"]
+    current = cyan bold
+    local = green bold
+    remote = red bold
+    upstream = red bold
+[color "diff"]
+    meta = magenta bold
+    frag = yellow
+    func = cyan bold
