@@ -39,6 +39,8 @@
     log = 100
 [mergetool "idea"]
     cmd = idea merge $LOCAL $REMOTE $BASE $MERGED
+[mergetool "code"]
+    cmd = code --wait --diff $MERGED
 [rerere]
     enabled = true
 [rebase]
