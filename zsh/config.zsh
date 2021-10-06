@@ -3,6 +3,11 @@ export CLICOLOR=true
 # remove `/` & `=` from WORDCHARS
 export WORDCHARS=${WORDCHARS//[\/=]/}
 
+export TIMEFMT='%J [%P cpu]  [%U user | %S system | %*E real]'
+
+# see https://www.reddit.com/r/zsh/comments/er6fok/getting_sign_in_output/ff2im4f/
+export PROMPT_EOL_MARK='%K{red} %K{default}'
+
 fpath=($DOTFILES_ROOT/functions $fpath)
 
 autoload -U $DOTFILES_ROOT/functions/*(:t)
