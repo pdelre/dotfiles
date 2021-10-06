@@ -10,6 +10,7 @@
     # @see http://collectiveidea.com/blog/archives/2016/04/04/multiple-personalities-in-git/
     useConfigOnly = true
 [init]
+    defaultBranch = main
     templateDir = ~/.git/templates
 [core]
     autocrlf = false
@@ -38,6 +39,8 @@
     log = 100
 [mergetool "idea"]
     cmd = idea merge $LOCAL $REMOTE $BASE $MERGED
+[mergetool "code"]
+    cmd = code --wait --diff $MERGED
 [rerere]
     enabled = true
 [rebase]

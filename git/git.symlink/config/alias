@@ -40,16 +40,19 @@
     rgh = !"git --no-pager reflog-pretty -8"
 
     # current status and recent log
-    wat = !"git ls && echo '' && git wip-st && git st && echo '' && git lgbh"
+    wat = !"git ll && echo '' && git wip-st && git st && echo '' && git lgbh"
 
     # hooks
     pre = !".git/hooks/pre-commit"
 
     # branches
     ls = branch -vv
+    ll = branch -vva
     ls-behind = !"git ls | grep behind"
     branch-archive = "!f() { git tag _$1 $1 && git branch -D $1; }; f"
     branch-shelf   = "!f() { git branch -m $1 shelf/$1; }; f"
+    branch-default = !"git remote show origin | grep 'HEAD branch' | awk '{print $3}'"
+    branch-clean-remotes = !"git branch -r | awk '{print $1}' | egrep -v '(origin/(master|main|HEAD|pdelre)|'\\'')' | xargs -I{} git branch -rD {}"
 
     # misc
     time-machine = "!f() { SHA=$(git rev-list -n 1 --before=\"$1\" master) && (git log -1 $SHA && echo '\n' && git --no-pager show $SHA:$2 | nl -ba) | less; }; f" # $1 datetime $2 filepath

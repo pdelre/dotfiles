@@ -81,12 +81,11 @@ module.exports = {
 
     // set to false for no bell
     bell: 'SOUND',
+    // URL to custom bell
+    // bellSoundURL: 'http://example.com/bell.mp3',
 
     // if true, selected text will automatically be copied to the clipboard
     copyOnSelect: false,
-
-    // URL to custom bell
-    // bellSoundURL: 'http://example.com/bell.mp3',
 
     // for advanced config flags please refer to https://hyper.is/#cfg
     // modifierKeys: {

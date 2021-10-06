@@ -1,3 +1,8 @@
+# https://github.com/romkatv/powerlevel10k/blob/master/README.md#what-is-instant-prompt
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
+
 # shortcut to this dotfiles path is $DOTFILES_ROOT
 export DOTFILES_ROOT=$HOME/.dotfiles
 
@@ -39,3 +44,7 @@ do
 done
 
 unset config_files
+
+# Finalize Powerlevel10k instant prompt. Should stay at the bottom of ~/.zshrc.
+# https://github.com/romkatv/powerlevel10k/blob/master/README.md#what-is-instant-prompt
+# (( ! ${+functions[p10k-instant-prompt-finalize]} )) || p10k-instant-prompt-finalize
