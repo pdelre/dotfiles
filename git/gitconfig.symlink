@@ -24,6 +24,8 @@
 [branch]
     autosetuprebase = always
     autosetupmerge = always
+[pager]
+    branch = false
 [fetch]
     prune = true
 [push]
