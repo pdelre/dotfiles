@@ -5,7 +5,8 @@
     local = green bold
     remote = red bold
     upstream = red bold
-[color "diff"]
-    meta = magenta bold
-    frag = yellow
-    func = cyan bold
+; Now managed by delta in diff
+; [color "diff"]
+;     meta = magenta bold
+;     frag = yellow
+;     func = cyan bold
