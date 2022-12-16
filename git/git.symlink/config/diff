@@ -1,10 +1,41 @@
-[pager]
-    log = diff-highlight | less -RF# --pattern '^(commit|diff --git|@@)'
-    show = diff-highlight | less -RF# --pattern '^(commit|diff --git|@@)'
-    diff = diff-highlight | less -RF# --pattern '^(commit|diff --git|@@)'
-    branch = false
+[core]
+    pager = delta
 [interactive]
-    diffFilter = diff-highlight
+    diffFilter = delta --features='pdr-base pdr-layout-interactive'
 [diff]
     compactionHeuristic = 1
     indentHeuristic = 1
+
+; see https://github.com/dandavison/delta
+[delta]
+    features = pdr-base pdr-layout
+
+[delta "pdr-base"]
+    line-numbers = true
+    keep-plus-minus-markers = true
+    navigate = true
+    width = 200
+    line-numbers-zero-style = "grey"
+    file-style = magenta bold
+    hunk-label = @@
+    hunk-header-style = file line-number syntax
+    hunk-header-file-style = magenta italic bold
+    hunk-header-line-number-style = cyan bold
+    syntax-theme = Nord ; until something better
+    features = short-file-labels
+
+[delta "short-file-labels"]
+    file-added-label = [A]
+    file-copied-label = [C]
+    file-modified-label = [M]
+    file-removed-label = [D]
+    file-renamed-label = [R]
+
+[delta "pdr-layout"]
+    commit-decoration-style = yellow ul ol
+    file-decoration-style = magenta box ul
+    hunk-header-decoration-style = cyan box
+
+[delta "pdr-layout-interactive"]
+    file-decoration-style = magenta box ul
+    hunk-header-style = omit ; saves space to use a box in file-decoration-style
