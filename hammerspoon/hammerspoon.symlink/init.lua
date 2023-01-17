@@ -93,11 +93,20 @@ function bluetooth(power)
     t:start()
 end
 
+function refreshXbar()
+    -- https://github.com/matryer/xbar-plugins/blob/main/CONTRIBUTING.md#xbar-control-api
+    print("Refreshing Xbar")
+    -- local t = hs.task.new("/usr/bin/open", nil, {"xbar://app.xbarapp.com/refreshAllPlugins"})
+    local t = hs.task.new("/usr/bin/open", nil, {"xbar://app.xbarapp.com/refreshPlugin?path=meta_package_manager.3h.py"})
+    t:start()
+end
+
 function f(event)
     if event == hs.caffeinate.watcher.systemWillSleep then
         -- bluetooth("off")
     elseif event == hs.caffeinate.watcher.screensDidWake then
         -- bluetooth("on")
+        refreshXbar()
     end
 end
 
