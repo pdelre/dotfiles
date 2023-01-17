@@ -1,0 +1,6 @@
+-Xms128m
+-Xmx1500m
+-XX:ReservedCodeCacheSize=240m
+-XX:+UseCompressedOops
+-Dawt.useSystemAAFontSettings=lcd
+-Dawt.java2d.opengl=true
