@@ -95,9 +95,9 @@ end
 
 function f(event)
     if event == hs.caffeinate.watcher.systemWillSleep then
-        bluetooth("off")
+        -- bluetooth("off")
     elseif event == hs.caffeinate.watcher.screensDidWake then
-        bluetooth("on")
+        -- bluetooth("on")
     end
 end
 
