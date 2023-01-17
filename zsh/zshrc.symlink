@@ -48,3 +48,6 @@ unset config_files
 # Finalize Powerlevel10k instant prompt. Should stay at the bottom of ~/.zshrc.
 # https://github.com/romkatv/powerlevel10k/blob/master/README.md#what-is-instant-prompt
 # (( ! ${+functions[p10k-instant-prompt-finalize]} )) || p10k-instant-prompt-finalize
+
+# Created by `pipx` on 2022-05-16 17:10:54
+export PATH="$PATH:/Users/pdelre/.local/bin"
