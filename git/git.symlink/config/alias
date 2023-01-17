@@ -22,6 +22,8 @@
     lgb  = !"git log-super-pretty"
     # log graph for current branch
     lgbh = !"git --no-pager lgb -8"
+    # log graph for current branch to upstream
+    lgbu = !"git lgb $(git branch-upstream-range)"
     # log commit messages
     lgc  = !"git log-commits --reverse --first-parent --no-merges"
     # log graph for all branches
@@ -45,6 +47,9 @@
     # hooks
     pre = !".git/hooks/pre-commit"
 
+    # diffs
+    diff-upstream = !"git diff $(git branch-upstream-range)"
+
     # branches
     ls = branch -vv
     ll = branch -vva
@@ -53,6 +58,7 @@
     branch-shelf   = "!f() { git branch -m $1 shelf/$1; }; f"
     branch-default = !"git remote show origin | grep 'HEAD branch' | awk '{print $3}'"
     branch-clean-remotes = !"git branch -r | awk '{print $1}' | egrep -v '(origin/(master|main|HEAD|pdelre)|'\\'')' | xargs -I{} git branch -rD {}"
+    branch-upstream-range = !"echo $(git merge-base $(git rev-parse --abbrev-ref @{u}) HEAD)..HEAD"
 
     # misc
     time-machine = "!f() { SHA=$(git rev-list -n 1 --before=\"$1\" master) && (git log -1 $SHA && echo '\n' && git --no-pager show $SHA:$2 | nl -ba) | less; }; f" # $1 datetime $2 filepath
