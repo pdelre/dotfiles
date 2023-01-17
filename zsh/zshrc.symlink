@@ -49,5 +49,8 @@ unset config_files
 # https://github.com/romkatv/powerlevel10k/blob/master/README.md#what-is-instant-prompt
 # (( ! ${+functions[p10k-instant-prompt-finalize]} )) || p10k-instant-prompt-finalize
 
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/vault vault
+
 # Created by `pipx` on 2022-05-16 17:10:54
 export PATH="$PATH:/Users/pdelre/.local/bin"

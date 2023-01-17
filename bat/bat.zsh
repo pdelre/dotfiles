@@ -1,1 +1,1 @@
-export BAT_THEME=ansi-dark
+export BAT_THEME=ansi
