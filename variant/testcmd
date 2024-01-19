@@ -1,0 +1,19 @@
+#!/usr/bin/env /Users/pdelre/.dotfiles/variant/variant
+
+tasks:
+  hello:
+    # runner:
+    #   env:
+    #     GIT_CONFIG_PARAMETERS: 'color.ui=always'
+    #     FOO: bar
+    script: |
+      export GIT_CONFIG_PARAMETERS="'color.ui=always'"
+      git st
+
+    # env
+    # git -c color.ui=always st
+    # echo "${GIT_CONFIG_PARAMETERS:-nil}"
+    # git st
+  #  parameters:
+  #  - name: target
+    # GIT_CONFIG_PARAMETERS="'color.ui=always'"
