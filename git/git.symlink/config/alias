@@ -64,3 +64,8 @@
     time-machine = "!f() { SHA=$(git rev-list -n 1 --before=\"$1\" master) && (git log -1 $SHA && echo '\n' && git --no-pager show $SHA:$2 | nl -ba) | less; }; f" # $1 datetime $2 filepath
     clean-orig = "clean -f '*.orig'"
     root = "rev-parse --show-toplevel"
+
+    # commit entry
+    is-svn = !"test -d .git/svn/refs"
+    get-origin-url = !"git is-svn && git svn info --url || git ls-remote --get-url origin"
+    time-entry = !"echo \"Date: $(date)\" && echo \"Origin: $(git get-origin-url)\" && echo \"Branch: $(git rev-parse --abbrev-ref HEAD)\" && echo '' && git log -1 --name-status && echo ''"
