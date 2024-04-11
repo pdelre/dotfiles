@@ -4,8 +4,11 @@ help:	## Show `make` usage.
 
 .PHONY: init
 init: ## Initializes after first clone. Questionably safe.
+	# works for WSL
 	.make/init_gitconfig
+	# kind of works for WSL. manual actions needed.
 	homebrew/install.sh
+	# Need to install brewfiles: brew bundle install --file=./macos/Brewfile.symlink
 	.make/install
 	.make/symlink_dotfiles
 
