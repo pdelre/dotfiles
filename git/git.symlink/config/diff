@@ -9,6 +9,7 @@
 ; see https://github.com/dandavison/delta
 [delta]
     features = pdr-base pdr-layout
+    true-color = always
 
 [delta "pdr-base"]
     line-numbers = true
