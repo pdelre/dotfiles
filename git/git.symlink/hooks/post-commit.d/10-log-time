@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
 # gdate is for OSX
-git time-entry >> ~/timelog/$(gdate -I).log
+#git time-entry >> ~/timelog/$(gdate -I).log
+# Probably no longer needed post-Wayfair
