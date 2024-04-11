@@ -1,5 +1,9 @@
 #!/usr/bin/env zsh
 
+# Using powerlevel10k purepower
+# @see zgen.zsh
+return
+
 # Spaceship
 SPACESHIP_PROMPT_ORDER=(
   exit_code     # Exit code section
