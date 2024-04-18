@@ -59,6 +59,8 @@
     branch-default = !"git remote show origin | grep 'HEAD branch' | awk '{print $3}'"
     branch-clean-remotes = !"git branch -r | awk '{print $1}' | egrep -v '(origin/(master|main|HEAD|pdelre)|'\\'')' | xargs -I{} git branch -rD {}"
     branch-upstream-range = !"echo $(git merge-base $(git rev-parse --abbrev-ref @{u}) HEAD)..HEAD"
+    pull-default = !"default=$(git branch-default); git remote set-head origin -a && git fetch -v origin ${default}:${default} && git remote prune origin"
+    pull-local = !"~/.dotfiles/git/functions/git-pull-all-local-track.sh"
 
     # misc
     time-machine = "!f() { SHA=$(git rev-list -n 1 --before=\"$1\" master) && (git log -1 $SHA && echo '\n' && git --no-pager show $SHA:$2 | nl -ba) | less; }; f" # $1 datetime $2 filepath
@@ -69,3 +71,7 @@
     is-svn = !"test -d .git/svn/refs"
     get-origin-url = !"git is-svn && git svn info --url || git ls-remote --get-url origin"
     time-entry = !"echo \"Date: $(date)\" && echo \"Origin: $(git get-origin-url)\" && echo \"Branch: $(git rev-parse --abbrev-ref HEAD)\" && echo '' && git log -1 --name-status && echo ''"
+
+    # GitLab Merge Requests
+    mr-create = "!f() { test $1 && git cd $1 && git cd -b pdelre_mr_$1 && git branch -m $1 mr/$1 && git commit --no-verify; }; f" # $1 feature
+    mr-assigned = "!f() { git branch -m $1 $(echo "$1" | gsed -r 's/^mr\\/(.*)$/mr\\/'$2'\\/\\1/'); }; f" # $1 feature $2 mr
