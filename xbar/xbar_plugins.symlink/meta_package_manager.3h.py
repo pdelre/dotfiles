@@ -65,6 +65,7 @@ def fix_environment():
         '/usr/local/sbin',
         '/opt/local/bin',
         '/opt/local/sbin',
+        '/opt/homebrew/bin',
         os.environ.get('PATH', ''),
         str(pathlib.Path.home())+'/.local/bin/'])
 
@@ -181,7 +182,7 @@ def print_menu():
         # '-m', 'apt',
         '-m', 'brew',
         '-m', 'cask',
-        '-m', 'gem',
+        # '-m', 'gem',
         '-m', 'npm',
         '-m', 'pip',
         '-m', 'pipx',
@@ -190,7 +191,7 @@ def print_menu():
         '--output-format', 'json', '--include-auto-updates', 'outdated',
         '--plugin-output',
         #  '--cli-format', 'xbar',
-        )
+    )
 
     # Bail-out immediately on errors related to mpm self-execution or if mpm is
     # not able to produce any output.
