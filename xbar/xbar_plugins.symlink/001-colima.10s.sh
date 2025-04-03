@@ -20,19 +20,25 @@ RAT_ICON_ON=iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAYAAAAehFoBAAAABGdBTUEAALGPC/xhBQAA
 RAT_ICON_OFF=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
 
 icon=$RAT_ICON
+# monochrome doesn't set scale
+sfconfig=$(echo -n '{"renderingMode":"Palette", "colors": ["white"], "scale": "medium"}' | base64)
+status_image="square.stack.3d.up.slash"
 running=2
 if [[ -n $COLIMA ]]; then
   colima_status=$("$COLIMA" status 2>&1)
   if [[ $colima_status =~ "colima is running" ]]; then
+    status_image="square.stack.3d.up.fill"
     icon=$RAT_ICON_ON
     running=0
   elif [[ $colima_status =~ "colima is not running" ]]; then
+    status_image="square.stack.3d.up"
     icon=$RAT_ICON_OFF
     running=1
   fi
 fi
 
-echo "| templateImage=${icon}"
+# echo "| templateImage=${icon}"
+echo "| sfimage=${status_image} sfconfig=${sfconfig}"
 echo '---'
 #echo $PATH
 if [[ -z $COLIMA ]]; then
@@ -41,23 +47,23 @@ if [[ -z $COLIMA ]]; then
 fi
 # Set custom mounts with --mount /path/to/mount
 #echo -n 'Start Colima | shell="'"$COLIMA"'" param1=start param2=--memory param3='"$MEMORY"' terminal=true'
-echo -n 'Start Colima | shell="'"$COLIMA"'" param1=start terminal=true'
+echo -n ':play: Start Colima'
 if (( running == 0 )); then
-  echo " disabled=true"
-else
   echo
+else
+  echo ' | shell="'"$COLIMA"'" param1=start terminal=true'
 fi
-echo -n 'Restart Colima | shell="'"$COLIMA"'" param1=restart terminal=true'
+echo -n ':memories: Restart Colima'
 if (( running == 1 )); then
-  echo " disabled=true"
-else
   echo
+else
+  echo ' | shell="'"$COLIMA"'" param1=restart terminal=true'
 fi
-echo -n 'Stop Colima | shell="'"$COLIMA"'" param1=stop terminal=true'
+echo -n ':stop: Stop Colima'
 if (( running == 1 )); then
-  echo " disabled=true"
-else
   echo
+else
+  echo ' | shell="'"$COLIMA"'" param1=stop terminal=true'
 fi
 
 if (( running == 0 )); then
