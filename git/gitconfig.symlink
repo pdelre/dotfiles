@@ -4,6 +4,8 @@
     path = ~/.git/config/alias
     path = ~/.git/config/diff
     path = ~/.git/config/color
+[includeIf "gitdir:~/Projects/gitlab.personio-internal.de/"]
+    path = ~/.gitconfig.personio.local
 [user]
     # force user to configure user.name & user.email
     # @see http://stackoverflow.com/questions/12292582/how-do-i-make-git-block-commits-if-user-email-isnt-set
