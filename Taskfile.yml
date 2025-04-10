@@ -1,0 +1,37 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  upgrade:
+    desc: Upgrade All via mpm
+    # (set -x; mpm upgrade --all && (brew outdated --cask --greedy-auto-updates | egrep -iv 'google-chrome' | xargs brew upgrade --cask) && mpm --cask --include-auto-updates outdated && open -g 'swiftbar://refreshplugin?name=mpm.1h.py')
+    cmds:
+      - mpm upgrade --all
+      - brew outdated --cask --greedy-auto-updates | egrep -iv 'google-chrome' | xargs brew upgrade --cask
+      - mpm --cask --include-auto-updates outdated
+      - open -g 'swiftbar://refreshplugin?name=mpm.1h.py'
+  upgrade-chrome:
+    desc: Upgrade Chrome via mpm
+    # (set -x; brew upgrade --cask google-chrome && open -g 'swiftbar://refreshplugin?name=mpm.1h.py' && for i in {1..5}; do open -a "Google Chrome" && open -a "Google Calendar" && open -a "Gmail" && break || sleep 5; done)
+    cmds:
+      - brew upgrade --cask google-chrome
+      - open -g 'swiftbar://refreshplugin?name=mpm.1h.py'
+      - |
+        for i in {1..5}; do
+          open -a "Google Chrome" && \
+          open -a "Google Calendar" && \
+          open -a "Gmail" && \
+          break || sleep 5
+        done
+  rclone-size:
+    desc: Notify rclone size
+    cmds:
+      - 'rclone size google-drive-backup: | tee /dev/tty | noti -m -'
+  check-pkm:
+    desc: Check PKM Git & Sync conflict
+    dir: ~/Vaults/PKM
+    ignore_error: true
+    cmds:
+      - git wat
+      - fd conflict --hidden --no-ignore . && echo "No Syncthing conflicts found"
