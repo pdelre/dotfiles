@@ -11,7 +11,8 @@ export PROJECTS=~/Code
 
 # For utf8 based fonts
 # [ZSH error character not in range : r/zsh](https://www.reddit.com/r/zsh/comments/ltcacs/comment/goy8cju/)
-LC_ALL=en_US.utf8
+#doesn't exist on latest mac, 2023
+#LC_ALL=en_US.utf8
 
 # Stash your environment variables in ~/.localrc. This means they'll stay out
 # of your main dotfiles repository (which may be public, like this one), but

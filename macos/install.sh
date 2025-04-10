@@ -34,7 +34,7 @@ defaults write com.apple.systempreferences "NSQuitAlwaysKeepsWindows" -bool "fal
 # https://macos-defaults.com/dock/orientation.html
 defaults write com.apple.dock "orientation" -string "bottom"
 # https://macos-defaults.com/dock/tilesize.html
-defaults write com.apple.dock "tilesize" -int "36"
+defaults write com.apple.dock "tilesize" -int "30"
 # https://macos-defaults.com/dock/autohide.html
 defaults write com.apple.dock "autohide" -bool "false"
 # https://macos-defaults.com/dock/show-recents.html
@@ -47,10 +47,10 @@ defaults write com.apple.dock "mineffect" -string "scale"
 # https://osxdaily.com/2010/06/22/make-hidden-application-icons-translucent-in-the-dock/
 defaults write com.apple.dock "showhidden" -bool "true"
 # Minimize windows into their application’s icon
-defaults write com.apple.dock "minimize-to-application" -bool "true"
+defaults write com.apple.dock "minimize-to-application" -bool "false"
 # Hot corners
 # https://github.com/mathiasbynens/dotfiles/blob/main/.macos#L436
-defaults write com.apple.dock "wvous-br-corner" -int 5
+defaults write com.apple.dock "wvous-br-corner" -int 10
 defaults write com.apple.dock "wvous-br-modifier" -int 0
 killall -HUP Dock
 
@@ -104,13 +104,15 @@ killall Finder
 defaults write com.apple.menuextra.clock "FlashDateSeparators" -bool "false"
 # https://macos-defaults.com/menubar/dateformat.html
 defaults write com.apple.menuextra.clock "DateFormat" -string "\"EEE d MMM H:mm\""
+# Show menu bar when in fullscreen
+defaults write NSGlobalDomain "AppleMenuBarVisibleInFullscreen" -bool "true"
 killall SystemUIServer
 
 # Configure Mission Control
 # https://macos-defaults.com/mission-control/mru-spaces.html
 defaults write com.apple.dock "mru-spaces" -bool "false"
 # https://macos-defaults.com/mission-control/expose-group-apps.html
-defaults write com.apple.dock "expose-group-apps" -bool "false"
+defaults write com.apple.dock "expose-group-apps" -bool "true"
 # https://macos-defaults.com/mission-control/applespacesswitchonactivate.html
 defaults write NSGlobalDomain "AppleSpacesSwitchOnActivate" -bool "true"
 # https://macos-defaults.com/mission-control/spans-displays.html
@@ -173,6 +175,18 @@ defaults write NSGlobalDomain "ApplePressAndHoldEnabled" -bool "true"
 defaults write com.apple.HIToolbox AppleFnUsageType -int "2"
 # https://macos-defaults.com/keyboard/applekeyboardfnstate.html
 defaults write NSGlobalDomain com.apple.keyboard.fnState -bool "true"
+# https://stackoverflow.com/a/63761851
+# https://medium.com/swlh/top-mac-os-default-behaviors-you-should-consider-changing-419b679fe290#:~:text=Disable%20Auto%20Capitalization%20and%20Automatic%20Periods
+# Disables automatic period substitutions
+defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+# Disables "smart" dashes
+defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+
+# Chrome Shortcuts
+# Refresh: F5
+defaults write com.google.chrome NSUserKeyEquivalents -dict-add "Reload This Page" "\\Uf708"
+# Find Next: F3
+defaults write com.google.chrome NSUserKeyEquivalents -dict-add "Find Next" "\\Uf706"
 
 # PC Keybindings
 # https://apple.stackexchange.com/questions/16135/remap-home-and-end-to-beginning-and-end-of-line
