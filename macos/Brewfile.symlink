@@ -158,7 +158,7 @@ cask "jetbrains-toolbox"
 cask "karabiner-elements"
 cask "keka"
 cask "key-codes"
-cask "kitematic"
+# cask "kitematic" #deprecated
 cask "krita"
 cask "logitech-camera-settings"
 cask "losslesscut"
@@ -178,11 +178,11 @@ cask "tabby"
 cask "temurin17"
 cask "tenor"
 cask "todoist"
-cask "upterm"
+# cask "upterm" # deprecated
 cask "virtualbox"
 cask "visual-studio-code"
 cask "vlc"
-cask "vpn-by-google-one"
+# cask "vpn-by-google-one" #deprecated
 cask "xbar"
 cask "yed"
 mas "GIPHY CAPTURE", id: 668208984
