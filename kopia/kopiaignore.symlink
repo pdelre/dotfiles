@@ -1,0 +1,67 @@
+# Ephemeral dotfiles
+.config/htop
+.asdf
+.cache
+.colima
+.gem
+.minikube
+.npm
+.vscode
+.cursor
+.yarn/**/cache
+.m2
+tmp
+Library/pnpm
+
+# LLMs
+.ollama/models
+.local/pipx/**/open-webui
+
+# Codebases package manager directories
+Projects/**/.gradle
+Projects/**/node_modules
+Projects/**/vendor
+Projects/**/venv
+Projects/**/.venv
+Projects/**/.yarn/cache
+
+# MacOS Caches & Logs
+Library/Application Support/**/[cC]ache
+Library/Application Support/**/CacheStorage
+Library/Application Support/**/Code/Cached
+Library/Application Support/**/Cache[ds]
+Library/Application Support/**/Cached*
+Library/Application Support/**/Code Cache
+Library/Application Support/**/GPUCache
+Library/Application Support/**/*Dawn*Cache
+Library/Application Support/**/update-cache
+Library/Application Support/**/[lL]ogs
+Library/Caches
+Library/Containers/com.apple.*
+Library/Daemon Containers
+Library/Logs
+.Trash
+.DS_Store
+
+# App specific
+Library/Application Support/Code/Cached*
+Library/Application Support/Google/Chrome
+Library/Application Support/Signal
+Library/Application Support/Slack
+Library/Application Support/JetBrains/**/plugins
+Library/Google/GoogleSoftwareUpdate
+
+
+# Cloud storage (Google Drive)
+Library/CloudStorage
+Library/Application Support/FileProvider
+
+# permission denied
+Library/Group Containers/group.com.apple.secure-control-center-preferences
+Library/Group Containers/group.com.apple.CoreSpeech
+
+# sockets
+**/*.sock
+Library/Group Containers/*.com.1password/t
+Library/Group Containers/*.ZoomClient3rd/s.*
+Library/Group Containers/*.com.google.drivefs
