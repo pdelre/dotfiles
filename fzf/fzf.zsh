@@ -1,8 +1,10 @@
 # install path
 if test "$(uname)" = "Darwin"
 then
-  local fzf_path=/usr/local/opt/fzf
-elif test "$(expr substr $(uname -s) 1 5)" = "Linux"
+  # apple silicon
+  local fzf_path=/opt/homebrew/opt/fzf
+  #local fzf_path=/usr/local/opt/fzf
+elif test "$(uname -s | cut -c1-5)" = "Linux"
 then
   local fzf_path=/home/linuxbrew/.linuxbrew/opt/fzf
 fi

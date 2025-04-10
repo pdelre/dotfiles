@@ -14,7 +14,7 @@ then
   if test "$(uname)" = "Darwin"
   then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-  elif test "$(expr substr $(uname -s) 1 5)" = "Linux"
+  elif test "$(uname -s | cut -c1-5)" = "Linux"
   then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
   fi
