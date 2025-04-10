@@ -1,0 +1,11 @@
+mpm:
+  ignore_auto_updates: false
+  timeout: 120
+  exclude:
+    # always seems buggy
+    - gem
+    # asdf managed (for now)
+    - pip
+    - npm
+    - yarn
+    - mas
