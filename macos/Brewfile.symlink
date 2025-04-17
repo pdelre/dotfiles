@@ -1,11 +1,7 @@
 tap "go-task/tap"
 tap "homebrew/bundle"
-#no longer necessary
-#tap "homebrew/cask"
-#tap "homebrew/cask-drivers"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
-#tap "homebrew/core"
 tap "kong/deck"
 brew "act"
 brew "libpng"
@@ -158,7 +154,6 @@ cask "jetbrains-toolbox"
 cask "karabiner-elements"
 cask "keka"
 cask "key-codes"
-# cask "kitematic" #deprecated
 cask "krita"
 cask "logitech-camera-settings"
 cask "losslesscut"
@@ -178,11 +173,9 @@ cask "tabby"
 cask "temurin17"
 cask "tenor"
 cask "todoist"
-# cask "upterm" # deprecated
 cask "virtualbox"
 cask "visual-studio-code"
 cask "vlc"
-# cask "vpn-by-google-one" #deprecated
 cask "xbar"
 cask "yed"
 mas "GIPHY CAPTURE", id: 668208984
