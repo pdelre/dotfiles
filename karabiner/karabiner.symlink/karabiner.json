@@ -109,6 +109,10 @@
                     },
                     "simple_modifications": [
                         {
+                            "from": { "key_code": "caps_lock" },
+                            "to": [{ "key_code": "left_alt" }]
+                        },
+                        {
                             "from": { "key_code": "left_command" },
                             "to": [{ "key_code": "left_control" }]
                         },
@@ -119,10 +123,28 @@
                         {
                             "from": { "key_code": "right_control" },
                             "to": [{ "key_code": "right_command" }]
+                        }
+                    ]
+                },
+                {
+                    "identifiers": {
+                        "device_address": "c7-85-d0-1c-4a-1f",
+                        "is_keyboard": true,
+                        "is_pointing_device": true
+                    },
+                    "ignore": false,
+                    "simple_modifications": [
+                        {
+                            "from": { "key_code": "left_control" },
+                            "to": [{ "key_code": "left_command" }]
                         },
                         {
-                            "from": { "key_code": "caps_lock" },
-                            "to": [{ "key_code": "left_alt" }]
+                            "from": { "key_code": "left_command" },
+                            "to": [{ "key_code": "left_control" }]
+                        },
+                        {
+                            "from": { "key_code": "right_control" },
+                            "to": [{ "key_code": "right_command" }]
                         }
                     ]
                 }
