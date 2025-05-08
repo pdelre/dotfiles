@@ -34,4 +34,4 @@ tasks:
     ignore_error: true
     cmds:
       - git wat
-      - fd conflict --hidden --no-ignore . && echo "No Syncthing conflicts found"
+      - fd conflict --hidden --no-ignore -q . && fd conflict --hidden --no-ignore . || echo "No Syncthing conflicts found"
